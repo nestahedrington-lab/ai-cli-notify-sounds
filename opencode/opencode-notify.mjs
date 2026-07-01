@@ -1,9 +1,45 @@
 import { spawn } from "node:child_process";
 
-const NOTIFY_SCRIPT = `${process.env.HOME}/.local/bin/opencode-notify.sh`;
 const SOURCE = "OpenCode";
 const THROTTLE_MS = 1500;
 const recentEvents = new Map();
+const IS_WINDOWS = process.platform === "win32";
+
+function homeDir() {
+  return process.env.HOME || process.env.USERPROFILE || "";
+}
+
+function windowsNotifyScript() {
+  const localAppData =
+    process.env.LOCALAPPDATA ||
+    (process.env.USERPROFILE
+      ? `${process.env.USERPROFILE}\\AppData\\Local`
+      : "");
+  return `${localAppData}\\ai-notify\\bin\\opencode-notify.ps1`;
+}
+
+function notifyCommand(payload) {
+  if (IS_WINDOWS) {
+    return {
+      command: process.env.AI_NOTIFY_POWERSHELL || "powershell.exe",
+      args: [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        windowsNotifyScript(),
+        SOURCE,
+      ],
+      stdin: JSON.stringify(payload),
+    };
+  }
+
+  return {
+    command: `${homeDir()}/.local/bin/opencode-notify.sh`,
+    args: [SOURCE],
+    stdin: JSON.stringify(payload),
+  };
+}
 
 function eventSessionID(event) {
   return event?.properties?.sessionID || event?.id || "unknown";
@@ -37,12 +73,14 @@ function shouldThrottle(key) {
 }
 
 function notify(payload) {
-  const child = spawn(NOTIFY_SCRIPT, [SOURCE], {
+  const command = notifyCommand(payload);
+  const child = spawn(command.command, command.args, {
     stdio: ["pipe", "ignore", "ignore"],
     detached: true,
+    windowsHide: true,
   });
 
-  child.stdin.end(JSON.stringify(payload));
+  child.stdin.end(command.stdin);
   child.unref();
 }
 

@@ -1,0 +1,41 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "Bypass",
+              "-File",
+              "C:\\Users\\YOUR_USER\\AppData\\Local\\ai-notify\\bin\\claude-notify.ps1"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "Bypass",
+              "-File",
+              "C:\\Users\\YOUR_USER\\AppData\\Local\\ai-notify\\bin\\claude-notify.ps1"
+            ],
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}
+

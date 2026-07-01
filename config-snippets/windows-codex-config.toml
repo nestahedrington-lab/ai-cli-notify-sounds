@@ -1,0 +1,4 @@
+# Put this near the top of %USERPROFILE%\.codex\config.toml.
+# Replace C:\\Users\\YOUR_USER with the real home directory on that PC.
+notify = ["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\YOUR_USER\\AppData\\Local\\ai-notify\\bin\\codex-notify.ps1", "turn-ended"]
+
