@@ -1,10 +1,8 @@
 # AI CLI Notify Sounds
 
-为 macOS 上的 Codex、Claude Code、OpenCode 增加任务完成、需要人工确认、异常情况时的系统通知和提示音。
+为 macOS 上的 Codex、Claude Code、OpenCode 增加任务完成、需要人工确认时的系统通知和提示音。
 
-实现方式很简单：三个 CLI 在任务结束、需要你操作，或出现 429 限流、余额不足、503 等异常时触发本地脚本；脚本用 macOS 自带的 `osascript` 发系统通知，用 `afplay` 播放 `ok.mp3` 或 `error.mp3`。
-
-异常提示是 best effort：如果 CLI 把错误事件或错误文本传给 hook/plugin，就会播放异常提示音；如果 CLI 在 hook 触发前直接崩溃或被系统杀掉，脚本本身拿不到事件。
+实现方式很简单：三个 CLI 在任务结束或需要你操作时触发本地脚本；脚本用 macOS 自带的 `osascript` 发系统通知，用 `afplay` 播放提示音。
 
 ## 支持范围
 
@@ -12,7 +10,6 @@
 - Codex notify hook
 - Claude Code hooks
 - OpenCode plugin
-- 异常关键词识别：429、502、503、504、rate limit、quota、balance、billing、credits 等
 
 ## 安装
 
@@ -115,7 +112,7 @@ rm -f ~/.config/opencode/plugins/opencode-notify.mjs
 - `scripts/opencode-notify.sh`：OpenCode 通知和播放声音
 - `opencode/opencode-notify.mjs`：OpenCode 插件
 - `sounds/ok.mp3`：成功提示音
-- `sounds/error.mp3`：异常或需要操作提示音
+- `sounds/error.mp3`：需要操作提示音
 - `config-snippets/`：手动配置参考片段
 
 ## 开源协议
