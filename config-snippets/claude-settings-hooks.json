@@ -1,0 +1,40 @@
+{
+  "hooks": {
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/YOUR_USER/.local/bin/claude-notify.sh",
+            "args": [],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/YOUR_USER/.local/bin/claude-notify.sh",
+            "args": [],
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/YOUR_USER/.local/bin/claude-notify.sh",
+            "args": [],
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

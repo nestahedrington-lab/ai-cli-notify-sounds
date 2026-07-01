@@ -1,0 +1,13 @@
+.DS_Store
+*.bak
+*.bak.*
+
+# Local editor and OS files
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+

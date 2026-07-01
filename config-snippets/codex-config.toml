@@ -1,0 +1,3 @@
+# Put this near the top of ~/.codex/config.toml.
+# Replace /Users/YOUR_USER with the real home directory on that Mac.
+notify = ["/Users/YOUR_USER/.local/bin/codex-notify-mux.sh", "turn-ended"]
