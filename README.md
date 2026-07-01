@@ -14,6 +14,17 @@
 
 ## 安装
 
+### 不知道下哪个？
+
+如果你只是想安装使用，优先到 [Releases](https://github.com/nestahedrington-lab/ai-cli-notify-sounds/releases/latest) 下载对应系统的安装包：
+
+| 你的系统 | 下载这个文件 | 下载后怎么用 |
+| --- | --- | --- |
+| macOS | `ai-cli-notify-sounds-macos-v*.tar.gz` | 解压后在终端运行 `bash install.sh` |
+| Windows | `ai-cli-notify-sounds-windows-v*.zip` | 解压后在 PowerShell 运行 `powershell -ExecutionPolicy Bypass -File .\install.ps1` |
+
+GitHub 自动生成的 `Source code (zip)` 和 `Source code (tar.gz)` 是源码包，主要给开发者看；普通安装建议下载上面两个明确写了系统名的文件。
+
 ### macOS：从 GitHub 安装
 
 ```bash

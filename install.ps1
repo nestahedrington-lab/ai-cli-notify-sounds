@@ -4,7 +4,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$AppVersion = "0.2.0"
+$AppVersion = "0.2.1"
 
 if ($Help) {
   @"
@@ -244,4 +244,3 @@ Convert-ToJsonFile -Data $openCodeData -Path $OpenCodeConfig
 
 Write-Host "Done."
 Write-Host "Restart Codex, Claude Code, and OpenCode for the notification hooks to take effect."
-
